@@ -206,15 +206,15 @@ export default function Home() {
           <Row>
             <Col md={4}>
               <Card className="mb-4 shadow-sm">
-                <Card.Img variant="top" src="/project1.jpg" />
+                <Card.Img variant="top" src="/gameXO.jpg" />
                 <Card.Body>
-                  <Card.Title>Nền tảng E-commerce</Card.Title>
+                  <Card.Title>Game XO</Card.Title>
                   <Card.Text>
-                    Website bán hàng đầy đủ tính năng giỏ hàng.
+                    Game XO sử dụng các công nghệ: HTML5 CSS3, Javascript, Tailwind CSS
                   </Card.Text>
                   <div className={styles.btnGroup}>
                     <Button
-                      href="#projects"
+                      href="https://github.com/khanhhihi1/gameXO"
                       className={`${styles.primaryBtn}`}
                       aria-label="Xem code"
                     >
@@ -223,13 +223,26 @@ export default function Home() {
                     </Button>
 
                     <Button
-                      href="#contact"
+                      href="https://game-xo-chi.vercel.app/"
                       className={`${styles.outlineBtn}`}
                       aria-label="Demo"
                     >
                       <FaPlay className={styles.btnIcon} />
                       <span className={styles.btnText}>Demo</span>
                     </Button>
+                     <div className={styles.chips}>
+                    {/* small skill chips */}
+                    {[
+                      "Javascript",
+                      "Tailwind CSS",
+                      "HTML5",
+                      "CSS3",
+                    ].map((t) => (
+                      <span key={t} className={styles.chip}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                   </div>
                 </Card.Body>
               </Card>
