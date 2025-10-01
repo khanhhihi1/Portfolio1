@@ -1,103 +1,380 @@
-import Image from "next/image";
-
+"use client";
+import { useState } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Nav,
+  Navbar,
+  Button,
+  Card,
+  Form,
+} from "react-bootstrap";
+import styles from "./styles/portfolio.module.css";
+import {
+  FaUser,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaGraduationCap,
+  FaLaptopCode,
+  FaServer,
+  FaDatabase,
+  FaProjectDiagram,
+  FaCode, FaPlay, FaGithub
+} from "react-icons/fa";
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  return (
+    <>
+      {/* Navbar */}
+      <Navbar bg="light" expand="md" fixed="top" className="shadow-sm">
+        <Container>
+          <Navbar.Brand href="#home" >
+            KhanhNguyen
+          </Navbar.Brand>
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={() => setMenuOpen(!menuOpen)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          <Navbar.Collapse id="basic-navbar-nav" className={menuOpen ? "show" : ""}>
+            <Nav className="ms-auto align-items-md-center">
+              <Nav.Link href="#about">Giới thiệu</Nav.Link>
+              <Nav.Link href="#projects">Dự án</Nav.Link>
+              <Nav.Link href="#contact">Liên hệ</Nav.Link>
+              <Button variant="primary" className="ms-md-2 mt-2 mt-md-0">
+                CV
+              </Button>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Hero */}
+      <section id="home" className={styles.hero}>
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h1 className="fw-bold mb-3">
+                Xin chào, tôi là <span className="text-dark">Khánh</span>
+              </h1>
+              <p className="text-muted mb-4">
+                Tôi xây dựng các trải nghiệm số hiện đại, thân thiện với người dùng
+                bằng công nghệ web tiên tiến.
+              </p>
+              <section className="py-5">
+                <div className={styles.btnGroup}>
+                  <Button className={styles.primaryBtn} href="#projects">
+                    Xem dự án
+                  </Button>
+
+                  <Button className={styles.outlineBtn} href="#contact">
+                    Liên hệ
+                  </Button>
+                </div>
+              </section>
+            </Col>
+            <Col md={6} className="text-center">
+              <div className={styles.avatarWrapper}>
+                <img
+                  src="/avt.jpg"
+                  alt="Developer"
+                  className={styles.avatar}
+                />
+              </div>
+              <div className={styles.expBadge}>
+                <strong>Chưa có</strong>
+                <div>Kinh nghiệm</div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* About */}
+      <section id="about" className="py-5 bg-white">
+        <Container className={styles.introSection}>
+          <h2 className="text-center mb-4 fw-bold">Giới thiệu</h2>
+
+          <Row>
+            <Col md={4} className={styles.col}>
+              <div className={styles.card}>
+                <h4 className="mb-3">Thông tin cá nhân</h4>
+                <ul className={styles.infoList}>
+                  <li>
+                    <FaUser className={styles.icon} />
+                    <div>
+                      <b>Tên:</b> Nguyễn Đông Khánh
+                    </div>
+                  </li>
+                  <li>
+                    <FaEnvelope className={styles.icon} />
+                    <div>
+                      <b>Email:</b> dongkhanh88888@gmail.com
+                    </div>
+                  </li>
+                  <li>
+                    <FaMapMarkerAlt className={styles.icon} />
+                    <div>
+                      <b>Địa điểm:</b> Gò Vấp, TP.HCM
+                    </div>
+                  </li>
+                  <li>
+                    <FaGraduationCap className={styles.icon} />
+                    <div>
+                      <b>Học vấn:</b> Cao đẳng FPT Polytechnic
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </Col>
+
+            <Col md={4} className={styles.col}>
+              <div className={styles.card}>
+                <h4 className="mb-3">Kỹ năng</h4>
+
+                <div className={styles.skillGroup}>
+                  <div className={styles.skillHeader}>
+                    <FaLaptopCode className={styles.skillIcon} />
+                    <strong>Frontend</strong>
+                  </div>
+                  <p className={styles.skillText}>
+                    React · Next.js · Bootstrap · JavaScript · TypeScript · HTML5 · CSS3
+                  </p>
+
+                  <div className={styles.skillHeader}>
+                    <FaServer className={styles.skillIcon} />
+                    <strong>Backend</strong>
+                  </div>
+                  <p className={styles.skillText}>Node.js · Express · MongoDB · MySQL</p>
+
+                  <div className={styles.chips}>
+                    {/* small skill chips */}
+                    {[
+                      "React",
+                      "Next.js",
+                      "TypeScript",
+                      "Bootstrap",
+                      "Node.js",
+                      "Express",
+                      "MongoDB",
+                    ].map((t) => (
+                      <span key={t} className={styles.chip}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Col>
+
+            <Col md={4} className={styles.col}>
+              <div className={styles.card}>
+                <h4 className="mb-3">Kinh nghiệm học tập</h4>
+                <div className={styles.experience}>
+                  <div className={styles.expItem}>
+                    <FaProjectDiagram className={styles.expIcon} />
+                    <div>
+                      <b>Dự án nhóm:</b>
+                      <p className={styles.expText}>Dẫn dắt các thành viên xây dựng trang web thực tế.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.expItem}>
+                    <FaProjectDiagram className={styles.expIcon} />
+                    <div>
+                      <b>Dự án cá nhân:</b>
+                      <p className={styles.expText}>Xây các trang web nhỏ dùng nhiều công nghệ khác nhau.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.badgeRow}>
+                    <span className={styles.badge}>5+ Projects</span>
+                    <span className={styles.badge}>Team Lead (group)</span>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-5 bg-light">
+        <Container>
+          <h2 className="text-center mb-5 fw-bold">Dự án của tôi</h2>
+          <Row>
+            <Col md={4}>
+              <Card className="mb-4 shadow-sm">
+                <Card.Img variant="top" src="/project1.jpg" />
+                <Card.Body>
+                  <Card.Title>Nền tảng E-commerce</Card.Title>
+                  <Card.Text>
+                    Website bán hàng đầy đủ tính năng giỏ hàng.
+                  </Card.Text>
+                  <div className={styles.btnGroup}>
+                    <Button
+                      href="#projects"
+                      className={`${styles.primaryBtn}`}
+                      aria-label="Xem code"
+                    >
+                      <FaCode className={styles.btnIcons} />
+                      <span className={styles.btnText}>Xem code</span>
+                    </Button>
+
+                    <Button
+                      href="#contact"
+                      className={`${styles.outlineBtn}`}
+                      aria-label="Demo"
+                    >
+                      <FaPlay className={styles.btnIcon} />
+                      <span className={styles.btnText}>Demo</span>
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card className="mb-4 shadow-sm">
+                <Card.Img variant="top" src="/project2.jpg" />
+                <Card.Body>
+                  <Card.Title>Ứng dụng Quản lý công việc</Card.Title>
+                  <Card.Text>Ứng dụng Kanban kéo thả quản lý task.</Card.Text>
+                  <div className={styles.btnGroup}>
+                    <Button
+                      href="#projects"
+                      className={`${styles.primaryBtn}`}
+                      aria-label="Xem code"
+                    >
+                      <FaCode className={styles.btnIcons} />
+                      <span className={styles.btnText}>Xem code</span>
+                    </Button>
+
+                    <Button
+                      href="#contact"
+                      className={`${styles.outlineBtn}`}
+                      aria-label="Demo"
+                    >
+                      <FaPlay className={styles.btnIcon} />
+                      <span className={styles.btnText}>Demo</span>
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={4}>
+              <Card className="mb-4 shadow-sm">
+                <Card.Img variant="top" src="/project3.jpg" />
+                <Card.Body>
+                  <Card.Title>Bảng điều khiển MXH</Card.Title>
+                  <Card.Text>Dashboard phân tích dữ liệu mạng xã hội.</Card.Text>
+                  <div className={styles.btnGroup}>
+                    <Button
+                      href="#projects"
+                      className={`${styles.primaryBtn}`}
+                      aria-label="Xem code"
+                    >
+                      <FaCode className={styles.btnIcons} />
+                      <span className={styles.btnText}>Xem code</span>
+                    </Button>
+
+                    <Button
+                      href="#contact"
+                      className={`${styles.outlineBtn}`}
+                      aria-label="Demo"
+                    >
+                      <FaPlay className={styles.btnIcon} />
+                      <span className={styles.btnText}>Demo</span>
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-5 bg-white">
+        <Container>
+          <h2 className="text-center mb-5 fw-bold">Liên hệ</h2>
+          <Row>
+            <Col md={6} className={styles.contactCol}>
+              <h4 className="mb-3">Thông tin liên lạc</h4>
+
+              <ul className={styles.contactList}>
+                <li className={styles.contactItem}>
+                  <span className={styles.iconWrap} aria-hidden="true">
+                    <FaEnvelope />
+                  </span>
+                  <div className={styles.contactInfo}>
+                    <div className={styles.label}>Email</div>
+                    <a
+                      href="mailto:dongkhanh88888@gmail.com"
+                      className={styles.contactLink}
+                    >
+                      dongkhanh88888@gmail.com
+                    </a>
+                  </div>
+                </li>
+
+                <li className={styles.contactItem}>
+                  <span className={styles.iconWrap} aria-hidden="true">
+                    <FaMapMarkerAlt />
+                  </span>
+                  <div className={styles.contactInfo}>
+                    <div className={styles.label}>Địa chỉ</div>
+                    <div className={styles.contactText}>Gò Vấp, TP.HCM</div>
+                  </div>
+                </li>
+
+                <li className={styles.contactItem}>
+                  <span className={styles.iconWrap} aria-hidden="true">
+                    <FaGithub />
+                  </span>
+                  <div className={styles.contactInfo}>
+                    <div className={styles.label}>GitHub</div>
+                    <a
+                      href="https://github.com/khanhhihi1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      github.com/khanhhihi1
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </Col>
+            <Col md={6}>
+              <Form>
+                <Form.Group className="mb-3">
+                  <Form.Label>Họ và tên</Form.Label>
+                  <Form.Control type="text" placeholder="Nhập tên của bạn" />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" placeholder="Nhập email" />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Tin nhắn</Form.Label>
+                  <Form.Control as="textarea" rows={4} />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="w-100">
+                  Gửi tin nhắn
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-dark text-white py-4">
+        <Container className="text-center">
+          <p className="mb-0">© 2025 KhanhNguyen Portfolio. All rights reserved.</p>
+        </Container>
       </footer>
-    </div>
+    </>
   );
 }

@@ -1,0 +1,497 @@
+/* styles/portfolio.module.css */
+
+/* Hero Section */
+.hero {
+    padding: 160px 0 100px;
+    color: rgb(84, 82, 82);
+    position: relative;
+    overflow: hidden;
+    background-color: #e1dbdb;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.avatarWrapper {
+    position: relative;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.avatar {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.expBadge {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 15px 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    animation: pulse 2s infinite;
+}
+
+.expBadge strong {
+    font-size: 1.5rem;
+    display: block;
+    color: #667eea;
+}
+
+/* Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Cards Hover Effect */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 120px 0 60px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+    }
+
+    .expBadge {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 20px auto;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Loading Animation */
+.fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress Bars for Skills */
+.skill-bar {
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 4px;
+    transition: width 2s ease-in-out;
+}
+
+/* Buttons.module.css */
+
+.btnGroup {
+    display: flex;
+    gap: 0.75rem;
+    /* khoảng cách giữa 2 nút */
+    flex-wrap: wrap;
+    /* xuống dòng trên màn nhỏ */
+    align-items: center;
+}
+
+/* Nút chính */
+.primaryBtn {
+    padding: 0.52rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    align-items: center;
+    border: none;
+    display: inline-flex;
+    cursor: pointer;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.14);
+    transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms;
+}
+.btnIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem; /* kích thước icon */
+  margin-right: 5px; /* gap đã quản lý bởi parent */
+  margin-bottom: 5px;
+}
+.btnIcons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem; /* kích thước icon */
+  margin-right: 5px; /* gap đã quản lý bởi parent */
+}
+
+/* Trạng thái hover / focus / active cho primary */
+.primaryBtn:hover,
+.primaryBtn:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.18);
+    outline: none;
+}
+
+.primaryBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+}
+
+/* Nút outline / phụ */
+.outlineBtn {
+    padding: 0.48rem 1.12rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid rgba(76, 6, 48, 0.164);
+    color: #764ba2;
+    cursor: pointer;
+    transition: background 120ms ease, color 120ms ease, transform 120ms;
+}
+
+.outlineBtn:hover {
+    color: #fff !important;
+    background: linear-gradient(45deg, #667eea, #764ba2) !important;
+    border: none !important;
+}
+
+/* Hover outline */
+.outlineBtn:hover,
+.outlineBtn:focus {
+    background: rgba(37, 99, 235, 0.06);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.outlineBtn:active {
+    transform: translateY(0);
+}
+
+/* Responsive: trên màn nhỏ, cho nút chiếm full width */
+@media (max-width: 576px) {
+    .btnGroup {
+        gap: 0.5rem;
+    }
+
+    .primaryBtn,
+    .outlineBtn {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}
+
+/* Intro.module.css */
+
+.introSection {
+    padding-top: 5.5rem;
+    /* tránh bị navbar chèn */
+    padding-bottom: 3.5rem;
+}
+
+/* Common card */
+.card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), #ffffff);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
+    height: 100%;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(16, 24, 40, 0.08);
+}
+
+/* Column spacing */
+.col {
+    margin-bottom: 1.25rem;
+}
+
+/* Info list */
+.infoList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.infoList li {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.04);
+}
+
+.infoList li:last-child {
+    border-bottom: none;
+}
+
+/* Icon style */
+.icon {
+    min-width: 37px;
+    min-height: 37px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2ff, #eefbf5);
+    color: #334155;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(16, 24, 40, 0.04);
+}
+
+/* Skills section */
+.skillGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.skillHeader {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.skillIcon {
+    font-size: 18px;
+    color: #2563eb;
+}
+
+.skillText {
+    margin: 0;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+/* chips */
+.chips {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.chip {
+    background: rgba(37, 99, 235, 0.08);
+    color: #1e40af;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.04);
+}
+
+/* Experience */
+.experience {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.expItem {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+.expIcon {
+    font-size: 20px;
+    color: #0ea5b7;
+    margin-top: 4px;
+}
+
+.expText {
+    margin: 0.25rem 0 0 0;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+/* small badges row */
+.badgeRow {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: linear-gradient(90deg, #eef2ff, #f0fdf4);
+    color: #0f172a;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(14, 165, 233, 0.04);
+}
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+    .card {
+        padding: 1rem;
+    }
+
+    .icon {
+        min-width: 38px;
+        min-height: 38px;
+        font-size: 16px;
+    }
+}
+.contactCol {
+  /* khoảng cách nội bộ nếu cần */
+  padding-top: 0.25rem;
+}
+
+/* toàn bộ list */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* mỗi item */
+.contactItem {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), #fff);
+  padding: 0.7rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(16,24,40,0.04);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.contactItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(16,24,40,0.06);
+}
+
+/* khung icon */
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#eef2ff,#f0f9ff);
+  color: #0f172a;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(16,24,40,0.04);
+  flex-shrink: 0;
+}
+
+/* phần chữ */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+/* label nhỏ (Email, Địa chỉ, GitHub) */
+.label {
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-bottom: 0.18rem;
+  font-weight: 600;
+}
+
+/* text bình thường */
+.contactText {
+  color: #0f172a;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+/* link (email/github) */
+.contactLink {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.contactLink:hover,
+.contactLink:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* responsive: trên màn nhỏ, icon nhỏ hơn và spacing chút */
+@media (max-width: 576px) {
+  .contactItem {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+  .iconWrap {
+    min-width: 38px;
+    min-height: 38px;
+    font-size: 0.95rem;
+  }
+}
